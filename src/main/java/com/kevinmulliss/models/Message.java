@@ -6,47 +6,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Message {
-    @SerializedName("id")
-    private String id;
-    @SerializedName("type")
-    private MessageTypeEnum type;
     @SerializedName("timestamp")
     private Date timestamp;
-    @SerializedName("timestampEdited")
-    private Date timestampEdited;
-    @SerializedName("callEndedTimestamp")
-    private Date callEndedTimestamp;
-    @SerializedName("isPinned")
-    private boolean isPinned;
     @SerializedName("content")
     private String content;
     @SerializedName("author")
     private Author author;
-    @SerializedName("attachments")
-    private List<Attachment> attachments;
-    @SerializedName("embeds")
-    private List<Embed> embeds;
-    @SerializedName("stickers")
-    private List<Sticker> stickers;
-    @SerializedName("reactions")
-    private List<Reaction> reactions;
-    @SerializedName("mentions")
-    private List<Author> mentions;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public MessageTypeEnum getType() {
-        return type;
-    }
-
-    public void setType(MessageTypeEnum type) {
-        this.type = type;
+    public Message(Date timestamp, String content, Author author) {
+        this.timestamp = timestamp;
+        this.content = content;
+        this.author = author;
     }
 
     public Date getTimestamp() {
@@ -55,30 +25,6 @@ public class Message {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Date getTimestampEdited() {
-        return timestampEdited;
-    }
-
-    public void setTimestampEdited(Date timestampEdited) {
-        this.timestampEdited = timestampEdited;
-    }
-
-    public Date getCallEndedTimestamp() {
-        return callEndedTimestamp;
-    }
-
-    public void setCallEndedTimestamp(Date callEndedTimestamp) {
-        this.callEndedTimestamp = callEndedTimestamp;
-    }
-
-    public boolean isPinned() {
-        return isPinned;
-    }
-
-    public void setPinned(boolean pinned) {
-        isPinned = pinned;
     }
 
     public String getContent() {
@@ -96,44 +42,5 @@ public class Message {
     public void setAuthor(Author author) {
         this.author = author;
     }
-
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
-    }
-
-    public List<Embed> getEmbeds() {
-        return embeds;
-    }
-
-    public void setEmbeds(List<Embed> embeds) {
-        this.embeds = embeds;
-    }
-
-    public List<Sticker> getStickers() {
-        return stickers;
-    }
-
-    public void setStickers(List<Sticker> stickers) {
-        this.stickers = stickers;
-    }
-
-    public List<Reaction> getReactions() {
-        return reactions;
-    }
-
-    public void setReactions(List<Reaction> reactions) {
-        this.reactions = reactions;
-    }
-
-    public List<Author> getMentions() {
-        return mentions;
-    }
-
-    public void setMentions(List<Author> mentions) {
-        this.mentions = mentions;
-    }
 }
+
