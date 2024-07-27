@@ -35,7 +35,8 @@ private final static String ENGLISH_DICTIONARY = "C:\\Users\\stabb\\IdeaProjects
 //            Analyzer.firstCheck(messages);
 //            Analyzer.lastCheck(messages);
 //            Analyzer.blazeCheck(messages);
-            Analyzer.messageLength(messages);
+//            Analyzer.messageLength(messages);
+            Analyzer.wordUseByYear(messages, "");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -274,6 +274,37 @@ public class Analyzer {
         }
     }
 
+    public static void wordUseByYear(List<Message> messages, String word) {
+        Map<Integer, Integer> usesByYear = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> wordsByYear = new HashMap<Integer, Integer>();
+        int totalUses = 0;
+        int totalWords = 0;
+
+        DecimalFormat df = new DecimalFormat("00.00");
+
+
+        for (Message message : messages) {
+            for (String messageWord : Analyzer.getWords(message.getContent())) {
+                if (messageWord.toLowerCase().contains(word.toLowerCase())) {
+                    usesByYear.merge(message.getTimestamp().getYear(), 1, Integer::sum);
+                    totalUses++;
+                }
+
+                wordsByYear.merge(message.getTimestamp().getYear(), 1, Integer::sum);
+                totalWords++;
+            }
+        }
+
+        System.out.println("word use over time stats for " + word);
+        System.out.printf("%-10s%-10s%-20s%-20s\n", "year", "count", "% of uses", "% of year's words");
+
+        for (Integer year : usesByYear.keySet()) {
+            double percentUse = (double) usesByYear.get(year) / (double) totalUses * 100.0;
+            double percentYear = (double) usesByYear.get(year) / (double) wordsByYear.get(year) * 100.0;
+            System.out.printf("%-10s%-10s%-20s%-20s\n", 1900 + year, usesByYear.get(year) , df.format(percentUse), df.format(percentYear));
+        }
+    }
+
     public static void firstCheck(List<Message> messages) {
         // keep track of what day we're looking at
         int currentDate = messages.get(0).getTimestamp().getDate();
